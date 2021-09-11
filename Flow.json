@@ -1,0 +1,314 @@
+[
+    {
+        "id": "731232fe77cb6e9a",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "902d054d6df42ea6",
+        "type": "e-mail in",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "protocol": "IMAP",
+        "server": "imap.gmail.com",
+        "useSSL": true,
+        "autotls": "never",
+        "port": "993",
+        "box": "INBOX",
+        "disposition": "Read",
+        "criteria": "UNSEEN",
+        "repeat": "60",
+        "fetch": "auto",
+        "inputs": 0,
+        "x": 190,
+        "y": 220,
+        "wires": [
+            [
+                "67d80cbd2491eca5",
+                "71fab9399c2f9650"
+            ]
+        ]
+    },
+    {
+        "id": "67d80cbd2491eca5",
+        "type": "debug",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 130,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "71fab9399c2f9650",
+        "type": "function",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "func": "\n\n\nconst attachments = msg.attachments;\nconst stoklistesi = attachments.find( (file) => file.filename == \"stoklistesi.xlsx\" );\nif(attachments.length > 0){\n    return {payload:stoklistesi.content};\n}else{\n    return \"Dosya bulunamadı.\";\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 220,
+        "wires": [
+            [
+                "0966f2d8279fa34d",
+                "4b091a86b3121b1f"
+            ]
+        ]
+    },
+    {
+        "id": "23d262fba8e12531",
+        "type": "debug",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "0966f2d8279fa34d",
+        "type": "debug",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "9e370c1f236bae33",
+        "type": "file",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "filename": "",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 240,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4b091a86b3121b1f",
+        "type": "book",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "raw": false,
+        "x": 650,
+        "y": 300,
+        "wires": [
+            [
+                "23d262fba8e12531",
+                "2b8a29f65486f88c"
+            ]
+        ]
+    },
+    {
+        "id": "3f606f0f45936e74",
+        "type": "sheet-to-json",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "raw": "false",
+        "range": "",
+        "header": "default",
+        "blankrows": false,
+        "x": 650,
+        "y": 500,
+        "wires": [
+            [
+                "46562aec9c43a33a",
+                "0b07b09c0980706f"
+            ]
+        ]
+    },
+    {
+        "id": "46562aec9c43a33a",
+        "type": "debug",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "89c06a14509db0e5",
+        "type": "debug",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "f827ba546766fc84",
+        "type": "cell",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "address": "",
+        "dataType": "w",
+        "x": 750,
+        "y": 440,
+        "wires": [
+            [
+                "8fb8ac645db0bf99"
+            ]
+        ]
+    },
+    {
+        "id": "8fb8ac645db0bf99",
+        "type": "debug",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "2b8a29f65486f88c",
+        "type": "sheet",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "sheetName": "Sayfa1",
+        "x": 650,
+        "y": 380,
+        "wires": [
+            [
+                "89c06a14509db0e5",
+                "f827ba546766fc84",
+                "3f606f0f45936e74"
+            ]
+        ]
+    },
+    {
+        "id": "0b07b09c0980706f",
+        "type": "function",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "func": "\nconst data = msg.payload;\n\nlet queries = data.map((value)=>{\n    return {\n        query: 'INSERT INTO db_stoklistesi( \"StokKodu\", \"StokAdi\", \"Miktar\", \"Fiyat\") VALUES ($stokKodu, $stokAdi, $miktar, $fiyat)',\n        params: {\n            stokKodu: value.StokKodu,\n            stokAdi: value.StokAdi,\n            miktar: value.Miktar,\n            fiyat: value.Fiyat,\n        },\n    }\n})\n\nqueries.unshift({query: 'begin'})\nqueries.push({query: 'commit'})\n\nmsg.payload = queries;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 580,
+        "wires": [
+            [
+                "8337dc84f5eef37c",
+                "942bceb7c169239d"
+            ]
+        ]
+    },
+    {
+        "id": "8337dc84f5eef37c",
+        "type": "debug",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "942bceb7c169239d",
+        "type": "postgres",
+        "z": "731232fe77cb6e9a",
+        "postgresdb": "ff733ef8e5471c8c",
+        "name": "",
+        "output": true,
+        "outputs": 1,
+        "x": 720,
+        "y": 700,
+        "wires": [
+            [
+                "44e478d54d8c8cbb"
+            ]
+        ]
+    },
+    {
+        "id": "44e478d54d8c8cbb",
+        "type": "debug",
+        "z": "731232fe77cb6e9a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "ff733ef8e5471c8c",
+        "type": "postgresdb",
+        "hostname": "localhost",
+        "port": "5432",
+        "db": "postgres",
+        "ssl": false
+    }
+]
