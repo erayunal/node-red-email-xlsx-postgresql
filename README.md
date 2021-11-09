@@ -14,7 +14,7 @@ npm install node-red
 - [node-red-contrib-postgres-multi](https://flows.nodered.org/node/node-red-contrib-postgres-multi)
 
 ``` 
-npm install node-red-node-email node-red-node-email node-red-contrib-postgres-multi
+npm install node-red-node-email node-red-contrib-spreadsheet-in node-red-contrib-postgres-multi
 ```
 
 
